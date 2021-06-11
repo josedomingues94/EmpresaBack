@@ -9,18 +9,18 @@ INSERT INTO departamentos (id, nombre) VALUES (6, 'Marketing');
 INSERT INTO departamentos (id, nombre) VALUES (7, 'Publicidad y RRPP');
 INSERT INTO departamentos (id, nombre) VALUES (8, 'Direccion');
 
-INSERT INTO empleados (departamento_id, nombre, apellido, email, create_at) VALUES(1, 'Andrés', 'Guzmán', 'profesor@bolsadeideas.com', '2018-01-01');
-INSERT INTO empleados (departamento_id, nombre, apellido, email, create_at) VALUES(2, 'Mr. John', 'Doe', 'john.doe@gmail.com', '2018-01-02');
-INSERT INTO empleados (departamento_id, nombre, apellido, email, create_at) VALUES(4, 'Linus', 'Torvalds', 'linus.torvalds@gmail.com', '2018-01-03');
-INSERT INTO empleados (departamento_id, nombre, apellido, email, create_at) VALUES(4, 'Rasmus', 'Lerdorf', 'rasmus.lerdorf@gmail.com', '2018-01-04');
-INSERT INTO empleados (departamento_id, nombre, apellido, email, create_at) VALUES(4, 'Erich', 'Gamma', 'erich.gamma@gmail.com', '2018-02-01');
-INSERT INTO empleados (departamento_id, nombre, apellido, email, create_at) VALUES(3, 'Richard', 'Helm', 'richard.helm@gmail.com', '2018-02-10');
-INSERT INTO empleados (departamento_id, nombre, apellido, email, create_at) VALUES(3, 'Ralph', 'Johnson', 'ralph.johnson@gmail.com', '2018-02-18');
-INSERT INTO empleados (departamento_id, nombre, apellido, email, create_at) VALUES(3, 'John', 'Vlissides', 'john.vlissides@gmail.com', '2018-02-28');
-INSERT INTO empleados (departamento_id, nombre, apellido, email, create_at) VALUES(3, 'Dr. James', 'Gosling', 'james.gosling@gmail.com', '2018-03-03');
-INSERT INTO empleados (departamento_id, nombre, apellido, email, create_at) VALUES(5, 'Magma', 'Lee', 'magma.lee@gmail.com', '2018-03-04');
-INSERT INTO empleados (departamento_id, nombre, apellido, email, create_at) VALUES(6, 'Tornado', 'Roe', 'tornado.roe@gmail.com', '2018-03-05');
-INSERT INTO empleados (departamento_id, nombre, apellido, email, create_at) VALUES(7, 'Jade', 'Doe', 'jane.doe@gmail.com', '2018-03-06');
+INSERT INTO empleados (dni, nombre, apellido1, apellido2, create_at, email, departamento) VALUES('51133615S', 'Jose', 'Domingues', 'Gordillo', '1994-05-28', 'jose@gmail.com',6);
+INSERT INTO empleados (dni, nombre, apellido1, apellido2, create_at, email, departamento) VALUES('41594759H', 'Elia', 'Dotor', 'Puente', '1991-03-21', 'elia@gmail.com',2);
+INSERT INTO empleados (dni, nombre, apellido1, apellido2, create_at, email, departamento) VALUES('86140537V', 'Fatima', 'Gordillo', 'Dominguez', '1995-03-27', 'fatima@gmail.com',6);
+INSERT INTO empleados (dni, nombre, apellido1, apellido2, create_at, email, departamento) VALUES('53652910M', 'Javier', 'Serrato', 'Jimenez', '1991-08-14', 'javier@gmail.com',2);
+INSERT INTO empleados (dni, nombre, apellido1, apellido2, create_at, email, departamento) VALUES('57971451C', 'Giulia', 'Garcia', 'Gil', '1990-04-02', 'giulia@gmail.com',3);
+INSERT INTO empleados (dni, nombre, apellido1, apellido2, create_at, email, departamento) VALUES('59146104V', 'Sara', 'Sanchez', 'Gonzalez', '1996-01-30', 'sara@gmail.com',6);
+INSERT INTO empleados (dni, nombre, apellido1, apellido2, create_at, email, departamento) VALUES('52579634S', 'Paula', 'Montero', 'Sanchez', '1992-12-07', 'paula@gmail.com',4);
+INSERT INTO empleados (dni, nombre, apellido1, apellido2, create_at, email, departamento) VALUES('50457492Y', 'Francisco', 'Roales', 'Fernandez', '1990-10-09', 'francisco@gmail.com',4);
+INSERT INTO empleados (dni, nombre, apellido1, apellido2, create_at, email, departamento) VALUES('58218387M', 'Luis', 'Izquierdo', 'Lopez', '1974-02-20', 'luis@gmail.com',5);
+INSERT INTO empleados (dni, nombre, apellido1, apellido2, create_at, email, departamento) VALUES('56961108K', 'Hector', 'Rodriguez', 'Ramos', '1994-09-20', 'hector@gmail.com',6);
+INSERT INTO empleados (dni, nombre, apellido1, apellido2, create_at, email, departamento) VALUES('55633232G', 'Sergio', 'Torres', 'Martinez', '1995-11-19', 'sergio@gmail.com',5);
+INSERT INTO empleados (dni, nombre, apellido1, apellido2, create_at, email, departamento) VALUES('55809842C', 'Oscar', 'Alonso', 'Monje', '1993-02-04', 'oscar@gmail.com',5);
 
 /* Creamos algunos usuarios con sus roles */
 INSERT INTO `usuarios` (username, password, enabled, nombre, apellido, email) VALUES ('javier','$2a$10$C3Uln5uqnzx/GswADURJGOIdBqYrly9731fnwKDaUdBkt/M3qvtLq',1, 'Javier', 'Serrato','javier@gmail.com');

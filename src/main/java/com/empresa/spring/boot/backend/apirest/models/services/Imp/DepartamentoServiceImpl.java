@@ -12,30 +12,23 @@ import com.empresa.spring.boot.backend.apirest.models.dao.IDepartamentoDao;
 import com.empresa.spring.boot.backend.apirest.models.entity.Departamento;
 import com.empresa.spring.boot.backend.apirest.models.services.IDepartamentoService;
 
-
-
 @Service
 public class DepartamentoServiceImpl implements IDepartamentoService {
 
 	@Autowired
 	private IDepartamentoDao departamentoDao;
-	
-
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Departamento> findAll() {
 		return (List<Departamento>) departamentoDao.findAll();
 	}
-
-	/*
+	
 	@Override
 	@Transactional(readOnly = true)
-	public Page<Cliente> findAll(Pageable pageable) {
-		return clienteDao.findAll(pageable);
+	public Page<Departamento> findAll(Pageable pageable) {
+		return departamentoDao.findAll(pageable);
 	}
-	*/
-	
 	
 	
 	@Override
@@ -56,11 +49,7 @@ public class DepartamentoServiceImpl implements IDepartamentoService {
 		departamentoDao.deleteById(id);
 	}
 
-	@Override
-	public Page<Departamento> findAll(Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
+
 
 }

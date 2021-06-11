@@ -9,17 +9,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Clase departamento que contiene los datos que hacen referencia a la entidad
+ * Role de la base de datos
+ * 
+ * @author jose
+ */
+
 @Entity
-@Table(name="roles")
-public class Role implements Serializable{
+@Table(name = "roles")
+public class Role implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(unique=true, length=20)
+
+	@Column(unique = true, length = 20)
 	private String nombre;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -36,8 +43,5 @@ public class Role implements Serializable{
 		this.nombre = nombre;
 	}
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 }

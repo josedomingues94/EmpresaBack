@@ -23,8 +23,18 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+/**
+ * Clse empleado que contiene los datos que hacen referencia a la entidad
+ * Empleado de la base de datos
+ * 
+ * @author jose
+ */
 
 @Entity
 @Table(name = "empleados")
@@ -33,7 +43,7 @@ public class Empleado implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotEmpty(message = "no puede estar vacio")
 	@Size(min = 9, max = 9, message = "requiere tener 8 numeros y una letra")
 	@Column(nullable = false, unique = true)
@@ -45,7 +55,7 @@ public class Empleado implements Serializable {
 
 	@NotEmpty(message = "no puede estar vacio")
 	private String apellido1;
-	
+
 	@NotEmpty(message = "no puede estar vacio")
 	private String apellido2;
 
@@ -61,13 +71,12 @@ public class Empleado implements Serializable {
 
 	private String foto;
 
-	@NotNull(message = "la región no puede ser vacia")
+	
+	
+	@JsonIgnoreProperties(value={"empleado", "hibernateLazyInitializer", "handler"}, allowSetters=true) 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "departamento_id")
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@JoinColumn(name = "departamento")
 	private Departamento departamento;
-
-
 
 	public Long getId() {
 		return id;
@@ -76,7 +85,7 @@ public class Empleado implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String getDni() {
 		return dni;
 	}
@@ -100,7 +109,7 @@ public class Empleado implements Serializable {
 	public void setApellido1(String apellido1) {
 		this.apellido1 = apellido1;
 	}
-	
+
 	public String getApellido2() {
 		return apellido2;
 	}
@@ -133,8 +142,6 @@ public class Empleado implements Serializable {
 		this.foto = foto;
 	}
 
-
-
 	public Departamento getDepartamento() {
 		return departamento;
 	}
@@ -142,10 +149,6 @@ public class Empleado implements Serializable {
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
 	}
-
-
-
-
 
 	private static final long serialVersionUID = 1L;
 }

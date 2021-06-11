@@ -9,14 +9,12 @@ import com.empresa.spring.boot.backend.apirest.models.dao.IChatDao;
 import com.empresa.spring.boot.backend.apirest.models.documents.Mensaje;
 import com.empresa.spring.boot.backend.apirest.models.services.IChatService;
 
-
-
 @Service
 public class ChatServiceImpl implements IChatService {
-	
+
 	@Autowired
 	private IChatDao chatDao;
-	
+
 	@Override
 	public List<Mensaje> obtenerUltimos10Mensajes() {
 		return chatDao.findFirst10ByOrderByFechaDesc();

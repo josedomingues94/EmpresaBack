@@ -13,14 +13,12 @@ import com.empresa.spring.boot.backend.apirest.models.entity.Departamento;
 import com.empresa.spring.boot.backend.apirest.models.entity.Empleado;
 import com.empresa.spring.boot.backend.apirest.models.services.IEmpleadoService;
 
-
 @Service
 public class EmpleadoServiceImpl implements IEmpleadoService {
 
 	@Autowired
 	private IEmpleadoDao empleadoDao;
 	
-
 
 	@Override
 	@Transactional(readOnly = true)
@@ -33,13 +31,14 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	public Page<Empleado> findAll(Pageable pageable) {
 		return empleadoDao.findAll(pageable);
 	}
-	
+
 	@Override
 	@Transactional(readOnly = true)
-	public Page<Empleado> findEmpleadoFiltrado(String nombre, String apellido1, String apellido2, String email, Pageable pageable) {
+	public Page<Empleado> findEmpleadoFiltrado(String nombre, String apellido1, String apellido2, String email,
+		 Pageable pageable) {
 		return empleadoDao.findEmpleadoFiltrado(nombre, apellido1, apellido2, email, pageable);
 	}
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public Empleado findById(Long id) {
@@ -64,6 +63,11 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 		return empleadoDao.findAllDepartamentos();
 	}
 
+	@Override
+	public Empleado findByDepartamento(Long id) {
+		return empleadoDao.findByDepartamento(id);
+	}
+	
 	
 
 }

@@ -13,28 +13,27 @@ import org.springframework.stereotype.Component;
 import com.empresa.spring.boot.backend.apirest.models.entity.Usuario;
 import com.empresa.spring.boot.backend.apirest.models.services.IUsuarioService;
 
-
 @Component
-public class InfoAdicionalToken implements TokenEnhancer{
-	
+public class InfoAdicionalToken implements TokenEnhancer {
+
 	@Autowired
 	private IUsuarioService usuarioService;
 
 	@Override
 	public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
-		
+
 		Usuario usuario = usuarioService.findByUsername(authentication.getName());
 		Map<String, Object> info = new HashMap<>();
-		
+
 		info.put("info_adicional", "Hola que tal!: ".concat(authentication.getName()));
 		info.put("nombre", usuario.getNombre());
 		info.put("apellido", usuario.getApellido());
 		info.put("email", usuario.getEmail());
 		info.put("username", usuario.getUsername());
 		info.put("password", usuario.getPassword());
-		
+
 		((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info);
-		
+
 		return accessToken;
 	}
 

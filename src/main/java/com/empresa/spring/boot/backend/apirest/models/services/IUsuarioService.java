@@ -5,9 +5,9 @@ import java.util.List;
 import com.empresa.spring.boot.backend.apirest.models.entity.Usuario;
 
 public interface IUsuarioService {
-	
+
 	public List<Usuario> getListaDeUsuarios();
-	
+
 	public Usuario findById(Long id);
 
 	public Usuario save(Usuario usuario);

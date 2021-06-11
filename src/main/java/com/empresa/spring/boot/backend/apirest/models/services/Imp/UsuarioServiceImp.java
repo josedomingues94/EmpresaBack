@@ -19,35 +19,32 @@ import com.empresa.spring.boot.backend.apirest.models.dao.IUsuarioDao;
 import com.empresa.spring.boot.backend.apirest.models.entity.Usuario;
 import com.empresa.spring.boot.backend.apirest.models.services.IUsuarioService;
 
-
-
 @Service
-public class UsuarioServiceImp implements IUsuarioService, UserDetailsService{
-	
+public class UsuarioServiceImp implements IUsuarioService, UserDetailsService {
 
 	@Autowired
 	private IUsuarioDao usuarioDao;
-	
+
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
+
 		Usuario usuario = usuarioDao.findByUsername(username);
-		
-		if(usuario == null) {
-			throw new UsernameNotFoundException("Error en el login: no existe el usuario '"+username+"' en el sistema!");
+
+		if (usuario == null) {
+			throw new UsernameNotFoundException(
+					"Error en el login: no existe el usuario '" + username + "' en el sistema!");
 		}
-		
-		List<GrantedAuthority> authorities = usuario.getRoles()
-				.stream()
-				.map(role -> new SimpleGrantedAuthority(role.getNombre()))
-				.collect(Collectors.toList());
-		
-		return new User(usuario.getUsername(), usuario.getPassword(), usuario.getEnabled(), true, true, true, authorities);
+
+		List<GrantedAuthority> authorities = usuario.getRoles().stream()
+				.map(role -> new SimpleGrantedAuthority(role.getNombre())).collect(Collectors.toList());
+
+		return new User(usuario.getUsername(), usuario.getPassword(), usuario.getEnabled(), true, true, true,
+				authorities);
 	}
 
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public Usuario findByUsername(String username) {
 		return usuarioDao.findByUsername(username);
 	}
