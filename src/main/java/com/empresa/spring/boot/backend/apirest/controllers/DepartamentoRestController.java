@@ -7,13 +7,10 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
@@ -26,13 +23,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.RestController;
 
 import com.empresa.spring.boot.backend.apirest.models.entity.Departamento;
-import com.empresa.spring.boot.backend.apirest.models.entity.Empleado;
+
 import com.empresa.spring.boot.backend.apirest.models.services.IDepartamentoService;
-import com.empresa.spring.boot.backend.apirest.models.services.IEmpleadoService;
+
 
 
 @RestController
@@ -43,10 +40,7 @@ public class DepartamentoRestController {
 	@Autowired
 	private IDepartamentoService departamentoService;
 	
-	@Autowired
-	private IEmpleadoService empleadoService;
-	
-	private int numeroElementos = 4;
+
 
 	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
 	@GetMapping("/departamentos")
@@ -160,7 +154,7 @@ public class DepartamentoRestController {
 			departamentoService.delete(id);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al eliminar el departamento de la base de datos");
-			response.put("error", "Solo podra eliminar el departamento cuando no tenga empleados este departamento");
+			response.put("error", "Solo podra dar de baja un departamento cuando no tenga empleados este departamento");
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
