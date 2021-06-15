@@ -112,7 +112,7 @@ public class EmpleadoRestController {
 			empleadoNew = empleadoService.save(empleado);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar el insert en la base de datos");
-			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			response.put("error", "El DNI ya existe, tiene que introducir un DNI que no exista");
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 

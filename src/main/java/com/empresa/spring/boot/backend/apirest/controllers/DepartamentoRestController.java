@@ -93,8 +93,8 @@ public class DepartamentoRestController {
 		try {
 			departamentoNuevo = departamentoService.save(departamento);
 		} catch (DataAccessException e) {
-			response.put("mensaje", "Error al realizar el insert en la base de datos");
-			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			response.put("mensaje", "Este departamento ya existe");
+			response.put("error", "Tiene que crear un departamento con un nombre distinto");
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
